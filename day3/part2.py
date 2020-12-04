@@ -17,7 +17,6 @@ for i in pattern:
         if line[col] == '#':
             counter += 1
         col += i
-    print(f"i: {i}, counter: {counter}")
     total *= counter
     counter = 0
     col = 0
@@ -34,4 +33,4 @@ for line in foresta:
 
 total *= counter
     
-print(f"number of tree encountered in all slopes: {total}")
+print(f"product of all numbers of tree encountered in all slopes: {total}")

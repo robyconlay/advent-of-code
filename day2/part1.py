@@ -18,4 +18,4 @@ for line in file:
     if counter >= min and counter <= max:
         valid += 1
 
-print(valid)
+print(f"solution: {valid}")

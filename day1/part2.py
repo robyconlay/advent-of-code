@@ -1,4 +1,4 @@
-file = open("day1/input.txt", "r")
+file = open("input.txt", "r")
 sol = 0;
 
 input = []
@@ -11,7 +11,6 @@ for number1 in input:
         for number3 in input:
             if number1 +number2 + number3 == 2020:
                 sol = number1 * number2 * number3
-                print(str(number1) + " " + str(number2) + " " + str(number3))
                 break
 
 print("solution: " + str(sol))

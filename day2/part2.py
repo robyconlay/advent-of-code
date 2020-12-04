@@ -14,4 +14,4 @@ for line in file:
     if (seq[pos1 - 1] == letter) ^ (seq[pos2 - 1] == letter):
         valid += 1
 
-print(valid)
+print(f"solution: {valid}")
