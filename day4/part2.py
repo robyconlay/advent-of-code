@@ -35,7 +35,6 @@ for line in validlines:
     valid = True
     for el in line:
         el = el.split(":")
-        print(el)
         if el[0] == 'byr':
             if re.match("\d", el[1]) and not(int(el[1]) >= 1920 and int(el[1]) <= 2002):
                 valid = False
@@ -75,5 +74,5 @@ for line in validlines:
     if valid:
         total += 1
 
-print(f"total: {total}")
+print(f"total valid passports: {total}")
 

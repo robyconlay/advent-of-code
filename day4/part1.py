@@ -29,4 +29,4 @@ for line in lines:
     if valid:
         total += 1
 
-print(f"total: {total}")
+print(f"total valid passports: {total}")
