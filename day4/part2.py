@@ -36,40 +36,22 @@ for line in validlines:
     for el in line:
         el = el.split(":")
         if el[0] == 'byr':
-            if re.match("\d", el[1]) and not(int(el[1]) >= 1920 and int(el[1]) <= 2002):
-                valid = False
-                break
+            valid = re.match("\d", el[1]) and int(el[1]) >= 1920 and int(el[1]) <= 2002
         elif el[0] == 'iyr':
-            if re.match("\d", el[1]) and not(int(el[1]) >= 2010 and int(el[1]) <= 2020):
-                valid = False
-                break
+            valid = re.match("\d", el[1]) and int(el[1]) >= 2010 and int(el[1]) <= 2020
         elif el[0] == 'eyr':
-            if re.match("\d", el[1]) and not(int(el[1]) >= 2020 and int(el[1]) <= 2030):
-                valid = False
-                break
+            valid = re.match("\d", el[1]) and int(el[1]) >= 2020 and int(el[1]) <= 2030
         elif el[0] == 'hgt':
-            if re.match("^\d{3}cm$", el[1]) != None:
-                if not(int(el[1].replace("cm", "")) >= 150 and int(el[1].replace("cm", "")) <= 193):
-                    valid = False
-                    break
-            elif re.match("^\d{2}in$", el[1]) != None:
-                if not(int(el[1].replace("in", "")) >= 59 and int(el[1].replace("in", "")) <= 76):
-                    valid = False 
-                    break
-            else:
-                valid = False
+            valid = (re.match("^\d{3}cm$", el[1]) != None and int(el[1].replace("cm", "")) >= 150 and int(el[1].replace("cm", "")) <= 193)
+            valid = valid or (re.match("^\d{2}in$", el[1]) != None and int(el[1].replace("in", "")) >= 59 and int(el[1].replace("in", "")) <= 76)
         elif el[0] == 'hcl':
-            if re.search("^#{1}[0-9a-f]{6}$", el[1]) == None:
-                valid = False
-                break
+            valid = re.search("^#{1}[0-9a-f]{6}$", el[1]) != None
         elif el[0] == 'ecl':
-            if re.match("^(amb|blu|brn|gry|grn|hzl|oth)$", el[1]) == None:
-                valid = False
-                break
+            valid = re.match("^(amb|blu|brn|gry|grn|hzl|oth)$", el[1]) != None
         elif el[0] == 'pid':
-            if re.match("^\d{9}$", el[1]) == None:
-                valid = False
-                break
+            valid = re.match("^\d{9}$", el[1]) != None
+        if not valid:
+            break
 
     if valid:
         total += 1
