@@ -1,0 +1,8 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.pydocstyleEnabled": false,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "yapf",
+    "python.languageServer": "Jedi",
+    "python.pythonPath": "C:\\Users\\mazza\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+}
