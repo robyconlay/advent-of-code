@@ -1,5 +1,4 @@
 const fs = require("fs");
-// const colors = require('colors');
 
 var input = fs.readFileSync('input.txt', 'utf8')
     .toString()
@@ -37,7 +36,7 @@ var victory = false;
 var first_winning_number, first_winning_board;
 var last_winning_number, last_winning_board;
 
-for (let call of called_numbers) {
+called_numbers.forEach(call => {
     boards = boards.map(board =>
         board.map(row =>
             row.map(number => number == call ? -1 : number)
@@ -57,7 +56,7 @@ for (let call of called_numbers) {
             boards = boards.filter(board => board != new_board);
         }
     })
-}
+})
 
 var first_unmarked_sum = 0;
 var last_unmarked_sum = 0;
