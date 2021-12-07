@@ -12,7 +12,7 @@ input.split(',')
         fishes[age]++;
     });
 
-var sum80;
+var sum80, sum256;
 for (let day = 0; day < 256; day++) {
     if (day == 80) {
         sum80 = fishes.slice().reduce((a, b) => a + b);
@@ -22,7 +22,7 @@ for (let day = 0; day < 256; day++) {
     fishes.push(temp);
 }
 
-var sum256 = fishes.reduce((a, b) => a + b);
+sum256 = fishes.reduce((a, b) => a + b);
 
 console.log(`After 80 days there will be ${sum80} lanternfishes`)
 console.log(`After 256 days there will be ${sum256} lanternfishes`)
