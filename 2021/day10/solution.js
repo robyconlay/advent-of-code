@@ -1,4 +1,9 @@
 const fs = require("fs");
+
+if (process.argv[2] == undefined) {
+    console.log("You should pass a filename");
+    process.exit(1);
+}
 const filename = process.argv[2];
 
 const input = fs.readFileSync(filename, 'utf8')
@@ -10,11 +15,11 @@ var illegal_score = 0;
 var autocomplete_scores = [];
 var chunks = [];
 
-var closing_chars = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>',
+var reverse_chars = {
+    ')': '(',
+    ']': '[',
+    '}': '{',
+    '>': '<',
 }
 
 var illegal_chars = {
@@ -31,36 +36,14 @@ var autocomplete_chars = {
     '<': 4,
 }
 
-// var check_chunk = char => {
-//     console.log(char, char in closing_chars, closing_chars[char])
-//     if ((char in closing_chars) != undefined){
-//         var cc = chunks.pop()
-//         console.log(cc, cc == closing_chars[char])
-//         return cc == closing_chars[char]
-//     }
-//     else {
-//         chunks.push(char);
-//         return true;
-//     }
-// }
-
 var check_chunk = char => {
-    // console.log(char, char in closing_chars, closing_chars[char])
-
-    if (char == ')') {
-        return chunks.pop() == '('
-    } else if (char == '>') {
-        return chunks.pop() == '<'
-    } else if (char == ']') {
-        return chunks.pop() == '['
-    } else if (char == '}') {
-        return chunks.pop() == '{'
-    } else {
+    if (char in reverse_chars)
+        return chunks.pop() == reverse_chars[char];
+    else {
         chunks.push(char);
         return true;
     }
 }
-
 
 input.map(line => {
     var found = false;
@@ -83,6 +66,5 @@ input.map(line => {
 })
 
 console.log("The total syntax error score for those errors is", illegal_score);
-
 console.log("The middle score of the autocomplete tools is", autocomplete_scores.sort((a, b) => b - a)[Math.floor(autocomplete_scores.length / 2)])
 
